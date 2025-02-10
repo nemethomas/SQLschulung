@@ -1,0 +1,77 @@
+
+USE mydatabase;
+-- Tabelle sicher löschen
+DROP TABLE IF EXISTS Vorliebe;
+DROP TABLE IF EXISTS Sortiment;
+DROP TABLE IF EXISTS Gast;
+
+
+
+-- Tabelle Gast erstellen
+CREATE TABLE Gast (
+    Person VARCHAR(100) NOT NULL,
+    Bar VARCHAR(100) NOT NULL,
+    PRIMARY KEY (Person, Bar)
+);
+
+-- Tabelle Sortiment erstellen
+CREATE TABLE Sortiment (
+    Bar VARCHAR(100) NOT NULL,
+    Bier VARCHAR(100) NOT NULL,
+    PRIMARY KEY (Bar, Bier)
+);
+
+-- Tabelle Vorliebe erstellen
+CREATE TABLE Vorliebe (
+    Person VARCHAR(100) NOT NULL,
+    Bier VARCHAR(100) NOT NULL,
+    PRIMARY KEY (Person, Bier)
+);
+
+-- Gast-Tabelle befüllen
+INSERT INTO Gast (Person, Bar) VALUES
+
+('Hans Meier', 'The Alehouse'),
+('Peter Müller', 'The Alehouse'),
+('Ursina Schmid', 'The International Beer Bar'),
+('Reto Baumann', 'Fork & Bottle'),
+('Walter Brunner', 'Brauerei Oerlikon'),
+('Klara Sutter', 'The Beer Station'),
+('Stefan Ziegler', 'BierLab Zürich'),
+('Nicole Wenger', 'Bierwerk Zürich'),
+('Beat Weber', 'John Baker & Friends'),
+('Thomas Nemeth', 'Enfant Terrible'),
+('Barbara Keller', 'Sternen Grill');
+
+-- Sortiment-Tabelle befüllen (Bars und ihre Bieresorten)
+INSERT INTO Sortiment (Bar, Bier) VALUES
+('The Alehouse', 'Feldschlösschen Original'),
+('The Alehouse', 'Calanda Lager'),
+('The Alehouse', 'Appenzeller Quöllfrisch'),
+('The International Beer Bar', 'Bière du Boxer Blonde'),
+('The International Beer Bar', 'Schützengarten Spezial'),
+('Fork & Bottle', 'Felsenau Bärner Müntschi'),
+('Fork & Bottle', 'Stadtguet Züri-Hell'),
+('Brauerei Oerlikon', 'Oerlikon Pale Ale'),
+('Brauerei Oerlikon', 'Turbinenbräu Start'),
+('The Beer Station', 'Valaisanne Zwickel'),
+('BierLab Zürich', 'Turbinenbräu Start'),
+('Bierwerk Zürich', 'Locher Sonnenbräu'),
+('John Baker & Friends', 'Hürlimann Lager'),
+('Kennedy’s Irish Pub', 'Rugenbräu Lager'),
+('Sternen Grill', 'Chopfab Amber');
+
+-- Vorliebe-Tabelle befüllen (Person und ihre beVorliebeten Biere)
+INSERT INTO Vorliebe (Person, Bier) VALUES
+('Hans Meier', 'Feldschlösschen Original'),
+('Peter Müller', 'Appenzeller Quöllfrisch'),
+('Peter Müller', 'Schützengarten Spezial'),
+('Peter Müller', 'Calanda Lager'),
+('Ursina Schmid', 'Calanda Lager'),
+('Reto Baumann', 'Hürlimann Lager'),
+('Walter Brunner', 'Schützengarten Spezial'),
+('Klara Sutter', 'Bière du Boxer Blonde'),
+('Stefan Ziegler', 'Locher Sonnenbräu'),
+('Nicole Wenger', 'Stadtguet Züri-Hell'),
+('Beat Weber', 'Turbinenbräu Start'),
+('Barbara Keller', 'Rugenbräu Lager');
