@@ -1,0 +1,97 @@
+USE mydatabase;
+/*
+--- Alle Biersorten, die Herr Peter  Müller vorzieht
+select * from vorliebe vorliebe
+where vorliebe.person = 'Peter Müller';
+;
+
+--- Alle Restaurants, welche die Biersorte Cardinal im Sortiment haben
+select * 
+from sortiment
+where bier = 'Turbinenbräu Start'
+
+--- Alle Bars, welche die Biersorte Cardinal nicht im Sortiment haben
+select distinct bar 
+from sortiment
+where bier != 'Turbinenbräu Start'
+
+--- Die Gäste von Restaurants welche (mindestens) eine Biersorte bevorzugen
+select distinct person 
+from gast gast
+join sortiment sortiment on gast.bar = sortiment.bar 
+
+--- Alle in der Datenbank vorkommenden Restaurants
+select bar
+from gast
+UNION
+select bar
+from sortiment
+
+*/
+
+
+
+ 
+
+
+
+
+/*
+
+R47) 
+R49) 
+Alle Restaurants, die Gäste haben und Bier im Sortiment aber keinen Gast der
+ irgendeines seiner Vorzugsbiere erhalten könnte
+ Die Biersorten, die von (mindestens) einem Besucher bevorzugt werden, die aber kein
+ Restaurant im Sortiment hat
+ Die Restaurants mit Bieren im Sortiment, die nie verlangt werden
+R59) Alle Besucher des Restaurant Bären
+R60) Alle Restaurants bei denen Müller Gast ist, die kein Bier haben
+R62) Die Besucher ohne bevorzugte Biersorte, die in Restaurants ohne Bier Gast sind
+Alle Biersorten welche von einem Gast bevorzugt werden oder von einem Restaurant
+ mit Gästen im Sortiment gehalten werden (ein Gast ist ein Besucher der in mindestens
+ ein Restaurant geht)
+ Für den Besucher Meier alle Restaurants, die er besucht und die seine bevorzugte
+ Biersorte im Sortiment haben.
+
+R66) Für das Restaurant Ochsen alle Biersorten, die es im Sortiment haben müsste, damit
+ jeder Gast sein Vorzugsbier erhalten könnte.
+R67) Alle Besucher, die ein Restaurant als Gast besuchen, welches eine von ihnen
+ bevorzugte Biersorte im Sortiment führen.
+ 
+ R70) Die Restaurants, welche den Bier Geschmack aller ihrer Gäste vollständig verfehlen,
+ oder gar keine Gäste haben.
+R71) Die Restaurants, welche keine Gäste haben.
+R72) Die Restaurants, die zwar Gäste haben, aber keine Bier trinkenden.
+R73) Die Restaurants mit lauter Bier trinkenden Gästen, welche keines ihrer Vorzugsbiere
+ erhalten können.
+R74) Alle Restaurants die kein Bier im Sortiment haben
+R75) Alle Biersorten die Meier bevorzugt, die aber in keinem Restaurant zu haben sind
+R76) Alle Besucher von Restaurants, die kein Bier mögen
+R77) Alle Restaurants mit Cardinal im Sortiment, die keine Gäste haben
+R78) Gesucht eine Liste von Besuchern die nie ins Restaurant gehen, zusammen mit ihren
+ jeweiligen bevorzugten Bier
+ 
+ R79) Gesucht sind alle Kombinationen (Besucher, Restaurant) sodass der Besucher nie ins
+ Restaurant geht.
+ 
+
+ 
+
+
+
+select gast.person, vorliebe.bier, sortiment.bar
+from gast gast
+join vorliebe vorliebe on gast.person = vorliebe.person
+join sortiment sortiment on gast.bar = sortiment.bar
+where gast.person = 'Peter Müller';
+
+select sortiment.bar
+from gast gast 
+join sortiment sortiment on sortiment.bar = gast.bar
+where sortiment.bier != 'Locher Sonnenbräu'
+;
+
+select * from sortiment where bar ='Hopfen & Malz';
+ */
+ 
